@@ -6,7 +6,8 @@ Source0:	http://gforge.info.ucl.ac.be/frs/download.php/165/%{name}-%{version}.ta
 URL:		http://www.mancoosi.org/cudf/
 License:	LGPL
 Group:		Development/Other
-BuildRequires:	ocaml ocaml-findlib camlp4 ocaml-extlib-devel ncurses-devel
+BuildRequires:	ocaml ocaml-findlib camlp4 ocaml-extlib-devel
+BuildRequires:	glib2-devel ncurses-devel
 
 %description
 CUDF (for Common Upgradeability Description Format) is a format for describing
