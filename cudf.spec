@@ -5,7 +5,7 @@ Release:	1
 Source0:	http://gforge.info.ucl.ac.be/frs/download.php/165/%{name}-%{version}.tar.gz
 URL:		http://www.mancoosi.org/cudf/
 License:	LGPL
-Group:		Development/Libraries
+Group:		Development/Other
 BuildRequires:	ocaml ocaml-findlib camlp4 ocaml-extlib-devel
 
 %description
