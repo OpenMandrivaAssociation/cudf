@@ -87,3 +87,16 @@ make -k test || /bin/true
 %files ocaml-devel
 %{_libdir}/ocaml/cudf
 
+
+
+%changelog
+* Wed May 09 2012 Crispin Boylan <crisb@mandriva.org> 0.6.2-1
++ Revision: 797791
+- New release
+
+* Thu Apr 07 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.5.99-1
++ Revision: 651784
+- add glib2-devel to buildrequires
+- add ncurses-devel to buildrequires
+- imported package cudf
+
