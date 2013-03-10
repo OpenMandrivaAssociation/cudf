@@ -1,0 +1,124 @@
+diff -Naur cudf-0.6.3/cudf_822_parser.mly cudf-0.6.3-extlib/cudf_822_parser.mly
+--- cudf-0.6.3/cudf_822_parser.mly	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_822_parser.mly	2012-12-01 23:17:25.158020364 +0100
+@@ -19,7 +19,7 @@
+ 
+ %{
+ 
+-open ExtLib
++open ExtList
+ 
+ exception Dup_stanza
+ 
+diff -Naur cudf-0.6.3/cudf_checker.ml cudf-0.6.3-extlib/cudf_checker.ml
+--- cudf-0.6.3/cudf_checker.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_checker.ml	2012-12-01 23:20:04.645190487 +0100
+@@ -10,7 +10,6 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
+ open Printf
+ 
+ open Cudf_types
+diff -Naur cudf-0.6.3/cudf.ml cudf-0.6.3-extlib/cudf.ml
+--- cudf-0.6.3/cudf.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf.ml	2012-12-01 23:19:04.406391375 +0100
+@@ -10,7 +10,6 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
+ open Printf
+ 
+ open Cudf_types
+diff -Naur cudf-0.6.3/cudf_parser.ml cudf-0.6.3-extlib/cudf_parser.ml
+--- cudf-0.6.3/cudf_parser.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_parser.ml	2012-12-01 23:19:51.714662809 +0100
+@@ -10,7 +10,6 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
+ open Printf
+ 
+ open Cudf
+@@ -255,7 +254,7 @@
+ let parser_wrapper ?typedecl fname f =
+   let ic = open_in fname in
+   let p = from_in_channel ?typedecl ic in
+-  finally (fun () -> close_in ic ; close p) f p
++  Std.finally (fun () -> close_in ic ; close p) f p
+ 
+ let parse_from_file ?typedecl fname = parser_wrapper ?typedecl fname parse
+ let load_from_file ?typedecl fname = parser_wrapper ?typedecl fname load
+diff -Naur cudf-0.6.3/cudf_printer.ml cudf-0.6.3-extlib/cudf_printer.ml
+--- cudf-0.6.3/cudf_printer.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_printer.ml	2012-12-01 23:20:15.156806565 +0100
+@@ -10,7 +10,6 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
+ open Printf
+ 
+ open Cudf
+diff -Naur cudf-0.6.3/cudf_type_parser.mly cudf-0.6.3-extlib/cudf_type_parser.mly
+--- cudf-0.6.3/cudf_type_parser.mly	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_type_parser.mly	2012-12-01 23:18:24.649844636 +0100
+@@ -191,7 +191,7 @@
+ 
+ %%
+ 
+-open ExtLib
++open ExtString
+ 
+ let error_wrapper f =
+   fun lexer lexbuf ->
+diff -Naur cudf-0.6.3/cudf_types.ml cudf-0.6.3-extlib/cudf_types.ml
+--- cudf-0.6.3/cudf_types.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_types.ml	2012-12-01 23:15:53.110389276 +0100
+@@ -10,7 +10,6 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
+ open Printf
+ 
+ type version = int
+diff -Naur cudf-0.6.3/cudf_types_pp.ml cudf-0.6.3-extlib/cudf_types_pp.ml
+--- cudf-0.6.3/cudf_types_pp.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/cudf_types_pp.ml	2012-12-01 23:18:52.967809444 +0100
+@@ -10,7 +10,7 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
++open ExtString
+ open Printf
+ 
+ open Cudf_types
+diff -Naur cudf-0.6.3/main_cudf_check.ml cudf-0.6.3-extlib/main_cudf_check.ml
+--- cudf-0.6.3/main_cudf_check.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/main_cudf_check.ml	2012-12-01 23:20:28.178331025 +0100
+@@ -10,7 +10,6 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
+ open Printf
+ 
+ open Cudf
+diff -Naur cudf-0.6.3/tests.ml cudf-0.6.3-extlib/tests.ml
+--- cudf-0.6.3/tests.ml	2012-08-03 12:44:51.000000000 +0200
++++ cudf-0.6.3-extlib/tests.ml	2012-12-01 23:32:53.430069099 +0100
+@@ -10,7 +10,8 @@
+ (*  library, see the COPYING file for more information.                      *)
+ (*****************************************************************************)
+ 
+-open ExtLib
++open ExtList
++open Std
+ open OUnit
+ open Printf
+ 
