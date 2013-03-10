@@ -1,3 +1,5 @@
+%define debug_package          %{nil}
+
 Summary:	CUDF (Common Upgradeability Description Format) tools and libraries
 Name:		cudf
 Version:	0.6.3
