@@ -6,7 +6,7 @@ Version:	0.6.3
 Release:	2
 Source0:	http://gforge.info.ucl.ac.be/frs/download.php/165/%{name}-%{version}.tar.gz
 Patch0:		cudf-0.6.3-extlib.patch
-URL:		http://www.mancoosi.org/cudf/
+URL:		https://www.mancoosi.org/cudf/
 License:	LGPL
 Group:		Development/Other
 BuildRequires:	ocaml ocaml-findlib camlp4 ocaml-extlib-devel
